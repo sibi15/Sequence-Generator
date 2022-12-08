@@ -1,0 +1,7 @@
+
+> Prime Numbers:
+- Prime numbers are those numbers that have only 2 factors: 1 and themselves.
+- In about 200 BC, Eratosthenes devised an algorithm for calculating primes called the Sieve of Eratosthenes.
+- A security system can use large composite numbers as a lock and the two prime factors of that number represent the keys.
+- Due to the absence of any efficient way of finding the prime factorization. the lock can only be opened by those people who possess the keys (prime numbers).
+- Thus they are used in the field of crytography in this manner.

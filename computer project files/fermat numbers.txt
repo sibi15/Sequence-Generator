@@ -1,0 +1,6 @@
+
+> Fermat Numbers:
+- The Fermat numbers were first studied by Pierre de Fermat and hence are named after him.
+- A Fermat number is a positive integer of the form 2^(2^(n))+1 where 'n' is a non-negative integer.
+- A sequence of those Fermat numbers which are prime is called as the Fermat primes.
+- Until now, only the first 5 Fermat numbers are known to be prime.

@@ -1,0 +1,7 @@
+
+> Collatz Sequence:
+- The Collatz conjecture is a conjecture in mathematics that concerns a sequence defined as follows: 
+ (i) start with any postive integer n.
+ (ii) Then each term is obtained from the previous term as follows: if the previous term is even, the next term is one half of the previous term.
+      Else, if the previous term is odd, the next term is three times the previous term plus 1.
+- It is also called as the Hailstone sequence.

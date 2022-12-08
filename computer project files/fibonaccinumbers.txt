@@ -1,0 +1,4 @@
+> Fibonacci Numbers:
+- This is a sequence invented by Fibonacci in 1202.
+- The Fibonacci numbers form the Fibonacci sequence, such that each number is the sum of the two preceding ones starting from 0 and 1.
+- It has a wide variety of applications and appereances from being a searching technique to appearing as patterns in flower petals.

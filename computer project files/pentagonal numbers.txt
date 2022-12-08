@@ -1,0 +1,13 @@
+
+> Pentagonal Numbers:
+- A pentagonal number is a figurative number that extends the concept of triangular and square numbers to the pentagon.
+- It is defined as the no. of dots that is obtained after overlaying a pentagon to the previous one, sharing the same vertex.
+
+				.		1
+			      .   .
+			    .  . .  .		5
+			    .   .   .
+			      .   .             12 
+
+- The general formula for the nth term is given by:
+                 (3n^2 - n)/2
