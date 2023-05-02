@@ -29,7 +29,7 @@ import csv
 
 # CONNECTION AND CURSOR OBJECT INSTANTIATION:
 
-con=mysql.connector.connect(host='localhost', user='root', password='sibikarthik260104', database='test')
+con=mysql.connector.connect(host='localhost', user='root', password='', database='test')
 # if con.is_connected():
 #     print('Connection successful')
 
