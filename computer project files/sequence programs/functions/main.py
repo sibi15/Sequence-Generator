@@ -33,7 +33,7 @@ import smtplib
 
 # CONNECTION AND CURSOR OBJECT INSTANTIATION:
 
-con=mysql.connector.connect(host='localhost', user='root', password='kobe_24@lakers_8_2_messi_10', database='test')
+con=mysql.connector.connect(host='localhost', user='root', password='', database='test')
 # if con.is_connected():
 #     print('Connection successful')
 
