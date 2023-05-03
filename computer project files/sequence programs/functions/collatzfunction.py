@@ -48,6 +48,3 @@ if N>1:
     time.sleep(4)
 else:
     pass
-
-
-
