@@ -247,6 +247,7 @@ def send_windowtranscript():
     if tr1=='n':
         pass
     elif tr1=='y':
+        
         # OLD Mailing Method:
         #port=465
         #smtp_server="smtp.gmail.com"
@@ -423,6 +424,7 @@ def send_infotranscript():
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
         print('\nNOTE: You will be getting a no. of mails for each of the sequences and maybe also the same sequence as parts because of the word limit constraint while sending\n')
         
+        # OLD Mailing Method:
         #port=465
         #smtp_server="smtp.gmail.com"
         #sender_email=""
@@ -479,6 +481,7 @@ def send_infotranscript():
         #        server.quit()
         #print('> Mail to the inputed', n, 'addresses sent.\n')
         
+        # MAC METHOD:
         
     else:
         print('Wrong input, try again. \n')
@@ -625,7 +628,8 @@ def send_multilinestring():
         pass
     elif tr5=='y':
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
-
+        
+        # OLD Mailing Method:
         #port=465
         #smtp_server="smtp.gmail.com"
         #sender_email="04250@asianintlschool.com"
