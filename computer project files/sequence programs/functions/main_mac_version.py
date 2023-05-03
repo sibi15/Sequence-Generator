@@ -265,7 +265,7 @@ def send_windowtranscript():
         #        #except SMTPAuthenticationError:
         #        print('Mail sent.\n')
         #        server.quit()
-        #print('Mail to the addresses sent.\n') """
+        #print('Mail to the addresses sent.\n')
         
         sender_id=''
         passwd=''
