@@ -1,1 +1,0 @@
-C:\Users\sibik\AppData\Local\Programs\Python\Python38\Lib\site-packages\pyttsx3\drivers
