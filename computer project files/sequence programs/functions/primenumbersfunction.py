@@ -28,7 +28,3 @@ time.sleep(1)
 
 prime(l,u)
 time.sleep(1)
-                        
-                
-                    
-
