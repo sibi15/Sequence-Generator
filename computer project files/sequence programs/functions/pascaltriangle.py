@@ -24,11 +24,3 @@ def trianglenum(n):
 time.sleep(2)
 n=int(input('Enter number of lines to be generated: '))
 trianglenum(n)
-
-##num=0
-##	for i in range(0,n):
-##             num=(2*num)+2
-##             #time.sleep(0.05)
-##     	     print(num)
-    
-    
