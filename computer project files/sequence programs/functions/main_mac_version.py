@@ -1,26 +1,16 @@
 # main program:
 
-# Right now, sequence info transcipt sending, is via MULTI-LINE STRING
-# and shell transcript is via TEXT FILE
-
-# ONLY THE CURRENT VERSIONS (above 2) HAVE THE MAC MAIL SENDING VERSION:
-# Line 372
-# Line 641
+# Sequence info transcipt is via MULTI-LINE STRING
+# Shell transcript is via TEXT FILE
 
 # LESS SECURE APPS link:
 #https://myaccount.google.com/u/2/lesssecureapps?pli=1&rapt=AEjHL4Pt00WJObL2Gz1gyIyS-pjTd7FOgqspqLjlPWRZTqL6BI4zGG_6i-N0gjT-O4D00GWwMIKBLkYaMBfrzQ0IitJglwKyvw
-
-
-# Slowly, add SpeechRecognition at the input parts (if wrong, cancel and type too) and reach 10 sequences.
-
 
 import mysql.connector
 from time import perf_counter, sleep
 import time
 import pyttsx3
-
-
-start=time.perf_counter()                            # for time complexity of the program
+start=time.perf_counter()                      # time complexity of program
 
 import sys
 import ssl
@@ -28,15 +18,11 @@ import smtplib
 import csv
 
 # CONNECTION AND CURSOR OBJECT INSTANTIATION:
-
 con=mysql.connector.connect(host='localhost', user='root', password='', database='test')
-# if con.is_connected():
-#     print('Connection successful')
+cur=con.cursor()
 
-cur=con.cursor()   #cursor object:
-
+#                                              Description of user-defined functions used in project:
 #____________________________________________________________________________________________________________________________________________________
-
 
 # ask_choice2           ---> Going back to seqeunce info or main choice
 # ask_choice3           ---> Going back to sequence generation or main choice
@@ -45,8 +31,8 @@ cur=con.cursor()   #cursor object:
 # suggestion_csv        ---> To add suggestion of a sequence to a CSV file
 # improvement_review    ---> To give suggestions of improvement or reviews (CSV File)
 
-# SHELL:
-    # send_windowtranscript     ---> Probably will remove, doesn't work
+# SHELL 
+    # send_windowtranscript     ---> 
     # (*) send_text             ---> sending the window transcript by writing onto a TEXT file
     # send_text_multilinestring ---> send the multi-line string directly
 
@@ -58,58 +44,42 @@ cur=con.cursor()   #cursor object:
 #____________________________________________________________________________________________________________________________________________________
 
                                                                     # CHOICES:
-  
+
 
 def ask_choice2():                                             
-    print('\nOptions:')
-    time.sleep(1)                                               
+    print('\nOptions:')                                              
     print('1. Go back to main choice: ')
     print('2. Go back to sequence information choices: ')
     print('3. EXIT: ')
-
     time.sleep(1)
     k=0
     try:
-        #global ch3
         ch3=int(input('Please enter a choice (1-3): '))
-        
         for i in range(0,5):
             if ch3<1:
                 time.sleep(1)
                 print('Your choice is less than 1.')
-                time.sleep(1)
                 ch3=int(input('Please enter a numerical choice in the range (1-3): '))
                 k+=1
-            elif ch3>3:     
+            elif ch3>3:
                 time.sleep(1)
                 print('Your choice is greater than 3.')
-                time.sleep(1)
                 ch3=int(input('Please enter a numerical choice in the range (1-3): '))
                 k+=1
             elif ch3==1:
                 pass
             elif ch3==2:
                 pass
-            elif ch3==3:    # add that suggestion here
-                time.sleep(1)
-                suggestion()                                # SUGGESTION usage before defined, might give error
-                # suggestion.csv()
-                time.sleep(2)
+            elif ch3==3:
+                suggestion()
+                #suggestion.csv()
                 #improvement_review()
-
-##                send_windowtranscript()
-##                time.sleep(2)
+                #send_windowtranscript()
                 send_text()
-                time.sleep(1)
-##                send_text_multilinestring()
-##                time.sleep(2)
-
-##                send_infotranscript()
-##                time.sleep(2)
-##                send_direct()
-##                time.sleep(2)
+                #send_text_multilinestring()
+                #send_infotranscript()
+                #send_direct()
                 send_multilinestring()
-                time.sleep(1)
                 end=time.perf_counter()
                 time1=end-start
                 print('\nThank you for visiting!                                                                        > Time elapsed:',time1,'seconds')
@@ -122,39 +92,31 @@ def ask_choice2():
                 print('Maximum no. of attempts crossed, program exiting.                                              > Time elapsed:',time1,'seconds')
                 sys.exit()
     except ValueError:
-        time.sleep(1)
         end=time.perf_counter()
         time1=end-start
         print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
         time.sleep(1)
         sys.exit()
-        #print('\n')
-    return ch3                                                # return value stored in some variable for easier access
-                
+    return ch3
 
 def ask_choice3():                                            
     print('\nOptions:')
-    time.sleep(1)
     print('1. Go back to main choice: ')
     print('2. Go back to sequence generation choices: ')
     print('3. EXIT: ')
-
     time.sleep(1)
     k=0
     try:
         ch5=int(input('Please enter a choice in the range (1-3): '))
-        
         for i in range(0,5):
             if ch5<1:
                 time.sleep(1)
                 print('Your choice is less than 1. ')
-                time.sleep(1)
                 ch5=int(input('Please enter a numerical choice in the range (1-3): '))
                 k+=1
             elif ch5>3:
                 time.sleep(1)
                 print('Your choice is greater than 3. ')
-                time.sleep(1)
                 ch5=int(input('Please enter a numerical choice in the range (1-3): '))
                 k+=1
             elif ch5==1:
@@ -162,26 +124,15 @@ def ask_choice3():
             elif ch5==2:
                 pass
             elif ch5==3:
-                time.sleep(1)
                 suggestion()
-                # suggestion.csv()
-                time.sleep(1)
+                #suggestion.csv()
                 #improvement_review()
-                #time.sleep(2)
-
-##                send_windowtranscript()
-##                time.sleep(2)
+                #send_windowtranscript()
                 send_text()
-                time.sleep(1)
-##                send_text_multilinestring()
-##                time.sleep(2)
-
-##                send_infotranscript()
-##                time.sleep(2)
-##                send_direct()
-##                time.sleep(2)
+                #send_text_multilinestring()
+                #send_infotranscript()
+                #send_direct()
                 send_multilinestring()
-                time.sleep(1)
                 end=time.perf_counter()
                 time1=end-start
                 print('\nThank you for visiting!                                                                        > Time elapsed:',time1,'seconds')
@@ -194,45 +145,33 @@ def ask_choice3():
                 print('Maximum no. of attempts crossed, program exiting.                                              > Time elapsed:',time1,'seconds')
                 sys.exit()
     except ValueError:
-        time.sleep(1)
         end=time.perf_counter()
         time1=end-start
         print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
         time.sleep(1)
         sys.exit()
-        #print('\n')
     return ch5
 
-
 def ask_speak():
-    time.sleep(1)
     speaker=input('\nSPEAKER: Would you like a speaker for the sequence information? (y/n): ')
-    
     if speaker=='n':
         pass
     elif speaker=='y':
         pass
     else:
-        time.sleep(1)
         print('Please enter a valid choice:')
         ask_speak()
     return speaker
-
 
 #____________________________________________________________________________________________________________________________________________________
 
                                                                 # SUGGESTION:
 
-                                                        
-# SUGGESTION MODULE (Cursor object needed, hence defined here after the cursor object is instantiated):
-
-def suggestion():           # call this function at every exit point except for the input error exits:
-    time.sleep(1)
+                                                      
+def suggestion():
     sug=input('\nSUGGESTION: Would you like to provide a suggestion for a sequence to add? (y/n): ')
-    
     if sug=='y':
         n=int(input('Please enter the no. of suggestions you want to provide: '))
-        time.sleep(1)
         for i in range(1,n+1):
             name=input('Enter sequence name suggestion: ')
             query1=("insert into suggestions values('{}')".format(name))
@@ -244,19 +183,11 @@ def suggestion():           # call this function at every exit point except for 
         pass
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
-        suggestion()        # Recursion
+        suggestion()
 
-
-def suggestion_csv():       # for csv part, function call commented at ch==3, as not under usage right now. ORIGINAL under usage (SQL).
-      time.sleep(1)
+def suggestion_csv():
       sug=input('\nSUGGESTION: Would you like to provide a suggestion for a sequence to add? (y/n): ')
-      time.sleep(1)
-
       if sug=='y':
-          # with open('suggestions.csv', mode='a') as test:
-          #     test.close()
-
           with open('suggestions.csv', mode='r') as f:
                 r=csv.reader(f, delimiter=',')
                 count=0
@@ -265,7 +196,6 @@ def suggestion_csv():       # for csv part, function call commented at ch==3, as
                         count+=1
                     else:
                         pass
-
           with open('suggestion.csv', mode='a') as f:
                 w=csv.writer(f,delimiter=',')
                 n=int(input('Please input no. of suggestions you wish to provide: '))
@@ -278,19 +208,14 @@ def suggestion_csv():       # for csv part, function call commented at ch==3, as
           pass
       else:
           print('Wrong input, try again. \n')
-          time.sleep(1)
-          suggestion_csv()        # Recursion
-
+          suggestion_csv()
 
 #____________________________________________________________________________________________________________________________________________________
 
-                                                # IMPROVEMENTS or REVIEWS: (Suggestions on project) (CSV):
+                                                # IMPROVEMENTS or REVIEWS (Suggestions on project) (CSV):
 
 def improvement_review():
-    #time.sleep(1)
     imp=input('\nIMPROVEMENTS / REVIEWS: Would you like to give a review or provide a suggestion of improvement? (y/n): ')
-    time.sleep(1)
-
     if imp=='y':
         with open('improvements_reviews.csv', mode='r') as f:
             r=csv.reader(f, delimiter=',')
@@ -300,45 +225,35 @@ def improvement_review():
                     count+=1
                 else:
                     pass
-
         with open('improvements_reviews.csv', mode='w') as f:
             w=csv.writter(f, delimiter=',')
             serial_num=str(count+1)+'.'
             name=input('Enter your name (OPTIONAL): ')
             imp_review=input('Type in your improvement suggestions or reviews: ')
             w.write_row([serial_num,name,imp_review])
-            print('Reviews received. Thank you!')
-            
+            print('Reviews received. Thank you!')      
     elif imp=='n':
         pass
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
-        improvement_review()        # Recursion
-        
+        improvement_review()
 
 #____________________________________________________________________________________________________________________________________________________
 
                                                             # TRANSCRIPT 1: SHELL WINDOW:
 
-
-def send_windowtranscript():     # only variable is the mail id:
-    time.sleep(1)
+def send_windowtranscript():
     tr1=input('\nTRANSCRIPT 1: Would you like to receive a mail regarding the transcript of the shell window? (y/n): ')
-    time.sleep(1)
     if tr1=='n':
         pass
     elif tr1=='y':
-        n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))              # n and message are fixed
-        time.sleep(0.5)
-        message=input('Please copy the text in the shell window above, paste it here and enter: ')       
-        time.sleep(0.5)
-
+        n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
+        message=input('Please copy the text in the shell window above, paste it here and enter: ')
         port=465
         smtp_server="smtp.gmail.com"
-        sender_email="04250@asianintlschool.com"
-        password="sibikarthik260104"
-#       context=ssl.create_default_context()
+        sender_email=""
+        password="" # "upge gpcx oqxe vvpm"
+        #context=ssl.create_default_context()
         for i in range(1,n+1):
             context=ssl.create_default_context()
             receiver_email=input('Please enter email address to send the shell window transcript to: ')
@@ -356,7 +271,6 @@ def send_windowtranscript():     # only variable is the mail id:
         time.sleep(1)
         send_windowtranscript()
 
-
 # TWO DIFFERENT FUNCTIONS for sending the shell window transcript (CSV FILE and MULTI-LINE STRING):
 
 # (i) TEXT FILE:
@@ -364,16 +278,13 @@ def send_windowtranscript():     # only variable is the mail id:
 def send_text():
     time.sleep(1)
     tr1=input('\nTRANSCRIPT 1: Would you like to receive a mail regarding the transcript of the shell window? (y/n): ')
-    time.sleep(1)
     if tr1=='n':
         pass
     elif tr1=='y':
         n=int(input('Enter the no. of mails to be sent to the same, or different addresses: '))
-        time.sleep(0.5)
         print('Please follow the following instructions: ')
-        time.sleep(0.5)
         print('\nCopy the text in the shell window above, paste it after this line when prompted and ENTER. Then when the cursor is at the starting of the next line, please press CTRL+D: ')
-        time.sleep(2)
+        time.sleep(1)
         text=sys.stdin.read()
         shell_w=open('/Users/sibikarthik/Desktop/python projects/computer project files/shellwindow.txt','w')
         shell_w.write(text)
@@ -381,13 +292,11 @@ def send_text():
         shell_r=open('/Users/sibikarthik/Desktop/python projects/computer project files/shellwindow.txt','r')
         time.sleep(1)
         shell_r=shell_r.read()
-        #shell.close()
-        time.sleep(2)
 
         #port=465
         #smtp_server="smtp.gmail.com"
-        #sender_email="04250@asianintlschool.com"
-        #password="sibikarthik260104"
+        #sender_email=""
+        #password="" # "upge gpcx oqxe vvpm"
         #for i in range(1,n+1):
         #    context=ssl.create_default_context()
         #    receiver_email=input('\nPlease enter email address to send the shell window transcript to: ')
@@ -401,8 +310,8 @@ def send_text():
 
         # MAC METHOD:
         
-        sender_id='04250@asianintlschool.com'
-        passwd='sibikarthik260104'
+        sender_id=''
+        passwd=''
         subject='Shell Window Transcript'
 
         server=smtplib.SMTP('smtp.gmail.com',587)
@@ -427,7 +336,6 @@ def send_text():
         time.sleep(1)
         send_text()
 
-
 # (ii) DIRECT MULTI-LINE string send after reading from NOTEPAD File:
 
 def send_text_multilinestring():
@@ -438,11 +346,9 @@ def send_text_multilinestring():
         pass
     elif tr2=='y':
         n=int(input('Enter the no. of mails to be sent to the same, or different addresses: '))
-        time.sleep(0.5)
         print('Please follow the following instructions: ')
-        time.sleep(0.5)
         print('\nPlease copy the text in the shell window above, paste it after this line when prompted and ENTER. Then when the cursor is at the starting of the next line, please press CTRL+D: ')
-        time.sleep(2)
+        time.sleep(1)
         text=sys.stdin.read()
         shell_w=open('/Users/sibikarthik/Desktop/python projects/computer project files/shellwindow.txt','w')
         shell_w.write(text)
@@ -452,8 +358,6 @@ def send_text_multilinestring():
         time.sleep(1)
         shell_r=shell_r.read()
         text=text+shell_r
-        #shell.close()
-        time.sleep(2)
 
         port=465
         smtp_server="smtp.gmail.com"
