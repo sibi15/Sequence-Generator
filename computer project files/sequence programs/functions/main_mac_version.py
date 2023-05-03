@@ -482,11 +482,95 @@ def send_infotranscript():
         #print('> Mail to the inputed', n, 'addresses sent.\n')
         
         # MAC METHOD:
+        sender_id=''
+        passwd=''
+        server=smtplib.SMTP('smtp.gmail.com',587)
+        server.ehlo()
+        server.starttls()
+        server.login(sender_id,passwd)
+        for i in range(1,n+1):
+            receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
+            print('Sending files to address', i)
+            
+            file1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
+            r1=file1.readlines()
+            for j in r1:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 1',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 1 sent.')
+            file1.close()
+            
+            file2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
+            r2=file2.readlines()
+            for j in r2:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 2',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 2 sent.')
+            file2.close()
+
+            file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
+            r3=file3.readlines()
+            for j in r3:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 3',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 3 sent.')
+            file3.close()
+
+            file4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
+            r4=file4.readlines()
+            for j in r4:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 4',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 4 sent.')
+            file4.close()
+
+            file5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
+            r5=file5.readlines()
+            for j in r5:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 5',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 5 sent.')
+            file5.close()
+
+            file6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
+            r6=file6.readlines()
+            for j in r6:
+                message=j.strip()
+                body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 6',
+                    '', message])
+                server.sendmail(sender_id, [receiver_id], body)
+            print('Mail for sequence 6 sent.')
+            file6.close()
+
+            print('Mails sent for address', i)
+        server.quit()
+        print('\nAll mails sent.')
         
     else:
         print('Wrong input, try again. \n')
         send_infotranscript()
-
 
 # TWO DIFFERENT FUNCTIONS for Notepad file sending (DIRECT and MULTI-LINE STRING):
 
