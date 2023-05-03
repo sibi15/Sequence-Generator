@@ -42,7 +42,6 @@ cur=con.cursor()
 
                                                                     # CHOICES:
 
-
 def ask_choice2():                                             
     print('\nOptions:')                                              
     print('1. Go back to main choice: ')
@@ -163,7 +162,6 @@ def ask_speak():
 #____________________________________________________________________________________________________________________________________________________
 
                                                                 # SUGGESTION:
-
                                                       
 def suggestion():
     sug=input('\nSUGGESTION: Would you like to provide a suggestion for a sequence to add? (y/n): ')
@@ -308,7 +306,6 @@ def send_text():
             print('Mail sent.\n')
         server.quit()
         print('Mail to the address sent.\n')
-
     else:
         print('Wrong input, try again. \n')
         send_text()
@@ -330,7 +327,7 @@ def send_text_multilinestring():
         shell_w.close()
         text=''''''
         shell_r=open('/Users/sibikarthik/Desktop/python projects/computer project files/shellwindow.txt','r')
-        ime.sleep(1)
+        time.sleep(1)
         shell_r=shell_r.read()
         text=text+shell_r
 
@@ -360,7 +357,6 @@ def send_text_multilinestring():
 #____________________________________________________________________________________________________________________________________________________
 
                                                             # TRANSCRIPT 2: SEQUENCE INFO FILES:
-
 
 def send_infotranscript():
     tr3=input('\nTRANSCRIPT 2: Would you like a mail regarding the transcript of the sequence information? (y/n): ')
@@ -454,8 +450,7 @@ def send_infotranscript():
 
             print('Mails sent for address', i)
         server.quit()
-        print('\nAll mails sent.')
-        
+        print('\nAll mails sent.') 
     else:
         print('Wrong input, try again. \n')
         send_infotranscript()
@@ -537,8 +532,7 @@ def send_direct():
 
             print('Mails sent for address', i)
         server.quit()
-        print('\nAll mails sent.')
-        
+        print('\nAll mails sent.')      
     else:
         print('Wrong input, try again. \n')
         send_direct()
@@ -555,7 +549,6 @@ def send_multilinestring():
         # NEW METHOD:
         sender_id=''
         passwd=''
-        
         server=smtplib.SMTP('smtp.gmail.com',587)
         server.ehlo()
         server.starttls()
