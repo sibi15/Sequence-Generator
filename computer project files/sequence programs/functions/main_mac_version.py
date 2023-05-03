@@ -247,28 +247,46 @@ def send_windowtranscript():
     if tr1=='n':
         pass
     elif tr1=='y':
+        # OLD Mailing Method:
+        #port=465
+        #smtp_server="smtp.gmail.com"
+        #sender_email=""
+        #password="" # "upge gpcx oqxe vvpm"
+        #context=ssl.create_default_context()
+        #for i in range(1,n+1):
+        #    context=ssl.create_default_context()
+        #    receiver_email=input('Please enter email address to send the shell window transcript to: ')
+        #    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        #       print('Sending mail',i)
+        #       #try:
+        #       server.login(sender_email, password)
+        #        server.sendmail(sender_email, receiver_email, message)
+        #        #except SMTPAuthenticationError:
+        #        print('Mail sent.\n')
+        #        server.quit()
+        #print('Mail to the addresses sent.\n') """
+        
+        sender_id=''
+        passwd=''
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
         message=input('Please copy the text in the shell window above, paste it here and enter: ')
-        port=465
-        smtp_server="smtp.gmail.com"
-        sender_email=""
-        password="" # "upge gpcx oqxe vvpm"
-        #context=ssl.create_default_context()
+        subject='Shell Window Transcript'
+        server=smtplib.SMTP('smtp.gmail.com',587)
+        server.ehlo()
+        server.starttls()
+        server.login(sender_id,passwd)
         for i in range(1,n+1):
-            context=ssl.create_default_context()
-            receiver_email=input('Please enter email address to send the shell window transcript to: ')
-            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-                print('Sending mail',i)
-                #try:
-                server.login(sender_email, password)
-                server.sendmail(sender_email, receiver_email, message)
-                #except SMTPAuthenticationError:
-                print('Mail sent.\n')
-                server.quit()
-        print('Mail to the addresses sent.\n') 
+            receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % subject,
+                    '', message])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('Mail sent.\n')
+        server.quit()
+        print('Mail to the address sent.\n')
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
         send_windowtranscript()
 
 # TWO DIFFERENT FUNCTIONS for sending the shell window transcript (CSV FILE and MULTI-LINE STRING):
@@ -293,6 +311,7 @@ def send_text():
         time.sleep(1)
         shell_r=shell_r.read()
 
+        # OLD Mailing Method:
         #port=465
         #smtp_server="smtp.gmail.com"
         #sender_email=""
@@ -309,23 +328,19 @@ def send_text():
         #print('Mail to the address sent.\n')
 
         # MAC METHOD:
-        
         sender_id=''
         passwd=''
         subject='Shell Window Transcript'
-
         server=smtplib.SMTP('smtp.gmail.com',587)
         server.ehlo()
         server.starttls()
         server.login(sender_id,passwd)
-        
         for i in range(1,n+1):
             receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
             body='\r\n'.join(['To: %s' % receiver_id,
                     'From: %s' % sender_id,
                     'Subject: %s' % subject,
                     '', shell_r])
-
             server.sendmail(sender_id, [receiver_id], body)
             print('Mail sent.\n')
         server.quit()
@@ -333,15 +348,12 @@ def send_text():
 
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
         send_text()
 
 # (ii) DIRECT MULTI-LINE string send after reading from NOTEPAD File:
 
 def send_text_multilinestring():
-    time.sleep(1)
     tr2=input('\nTRANSCRIPT 1: Would you like to receive a mail regarding the transcript of the shell window? (y/n): ')
-    time.sleep(1)
     if tr2=='n':
         pass
     elif tr2=='y':
@@ -355,111 +367,121 @@ def send_text_multilinestring():
         shell_w.close()
         text=''''''
         shell_r=open('/Users/sibikarthik/Desktop/python projects/computer project files/shellwindow.txt','r')
-        time.sleep(1)
+        ime.sleep(1)
         shell_r=shell_r.read()
         text=text+shell_r
 
-        port=465
-        smtp_server="smtp.gmail.com"
-        sender_email="04250@asianintlschool.com"
-        password="sibikarthik260104"
+        # OLD Mailing Method:
+        #port=465
+        #smtp_server="smtp.gmail.com"
+        #sender_email=""
+        #password=""
+        #for i in range(1,n+1):
+        #    context=ssl.create_default_context()
+        #    receiver_email=input('\nPlease enter email address to send the shell window transcript to: ')
+        #    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        #        print('Sending mail to mail address', i)
+        #        server.login(sender_email, password)
+        #        server.sendmail(sender_email, receiver_email, text)
+        #        print('Mail sent.\n')
+        #        server.quit()
+        #print('Mail to the address sent.\n')
+        
+        # MAC METHOD:
+        sender_id=''
+        passwd=''
+        subject='Shell Window Transcript'
+        server=smtplib.SMTP('smtp.gmail.com',587)
+        server.ehlo()
+        server.starttls()
+        server.login(sender_id,passwd)
         for i in range(1,n+1):
-            context=ssl.create_default_context()
-            receiver_email=input('\nPlease enter email address to send the shell window transcript to: ')
-            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-                print('Sending mail to mail address', i)
-                server.login(sender_email, password)
-                server.sendmail(sender_email, receiver_email, text)
-                print('Mail sent.\n')
-                server.quit()
+            receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % subject,
+                    '', text])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('Mail sent.\n')
+        server.quit()
         print('Mail to the address sent.\n')
     else:
         print('Wrong input, try again. \n')
         time.sleep(1)
         send_text_multilinestring()
         
-
-
 #____________________________________________________________________________________________________________________________________________________
 
                                                             # TRANSCRIPT 2: SEQUENCE INFO FILES:
 
 
 def send_infotranscript():
-    time.sleep(1)
     tr3=input('\nTRANSCRIPT 2: Would you like a mail regarding the transcript of the sequence information? (y/n): ')
-    time.sleep(1)
     if tr3=='n':
         pass
     elif tr3=='y':
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
-        time.sleep(0.5)
         print('\nNOTE: You will be getting a no. of mails for each of the sequences and maybe also the same sequence as parts because of the word limit constraint while sending\n')
-        time.sleep(0.5)
-        port=465
-        smtp_server="smtp.gmail.com"
-        sender_email="04250@asianintlschool.com"
-        password="sibikarthik260104"
-        file1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
-        r1=file1.readlines()
-        file2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
-        r2=file2.readlines()
-        file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
-        r3=file3.readlines()
-        file4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
-        r4=file4.readlines()
-        file5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
-        r5=file5.readlines()
-        file6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
-        r6=file6.readlines()
         
-        for i in range (1,n+1):
-            context=ssl.create_default_context()
-            receiver_email=input('Please enter email address to send the shell window transcript to: ')
-            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-                print('Sending mail to address',i)
-                server.login(sender_email, password)
-                for j in r1:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 1 sent.')
-                file1.close()
-                for j in r2:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 2 sent.')
-                file2.close()
-                for j in r3:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 3 sent.')
-                file3.close()
-                for j in r4:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 4 sent.')
-                file4.close()
-                for j in r5:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 5 sent.')
-                file5.close()
-                for j in r6:
-                    message=j.strip()
-                    time.sleep(0.5)
-                    server.sendmail(sender_email, receiver_email, message)
-                print('Mail for sequence 6 sent.\n')
-                file6.close()
-                server.quit()
-        print('> Mail to the inputed', n, 'addresses sent.\n')
+        #port=465
+        #smtp_server="smtp.gmail.com"
+        #sender_email=""
+        #password=""
+        #file1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
+        #r1=file1.readlines()
+        #file2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
+        #r2=file2.readlines()
+        #file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
+        #r3=file3.readlines()
+        #file4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
+        #r4=file4.readlines()
+        #file5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
+        #r5=file5.readlines()
+        #file6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
+        #r6=file6.readlines()
+        
+        #for i in range (1,n+1):
+        #    context=ssl.create_default_context()
+        #    receiver_email=input('Please enter email address to send the shell window transcript to: ')
+        #    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        #        print('Sending mail to address',i)
+        #        server.login(sender_email, password)
+        #        for j in r1:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 1 sent.')
+        #        file1.close()
+        #        for j in r2:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 2 sent.')
+        #        file2.close()
+        #        for j in r3:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 3 sent.')
+        #        file3.close()
+        #        for j in r4:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 4 sent.')
+        #        file4.close()
+        #        for j in r5:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 5 sent.')
+        #        file5.close()
+        #        for j in r6:
+        #            message=j.strip()
+        #            server.sendmail(sender_email, receiver_email, message)
+        #        print('Mail for sequence 6 sent.\n')
+        #        file6.close()
+        #        server.quit()
+        #print('> Mail to the inputed', n, 'addresses sent.\n')
+        
+        
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
         send_infotranscript()
 
 
@@ -468,83 +490,141 @@ def send_infotranscript():
 # (i) DIRECT:
 
 def send_direct():
-    time.sleep(1)
     tr4=input('\nTRANSCRIPT 2: Would you like a mail regarding the transcript of the sequence information? (y/n): ')
-    time.sleep(1)
     if tr4=='n':
         pass
     elif tr4=='y':
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
-        time.sleep(0.5)
-        port=465
-        smtp_server="smtp.gmail.com"
-        sender_email="04250@asianintlschool.com"
-        password="sibikarthik260104"
         
-        for i in range(1,n+1):
-            context=ssl.create_default_context()
-            receiver_email=input('Please enter email address to send the shell window transcript to: ')
-            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-                print('Sending files to address', i)
-                server.login(sender_email, password)
-                time.sleep(0.5)
+        # OLD Mailing method:
+        #port=465
+        #smtp_server="smtp.gmail.com"
+        #sender_email=""
+        #password=""
+        
+        #for i in range(1,n+1):
+        #    context=ssl.create_default_context()
+        #    receiver_email=input('Please enter email address to send the shell window transcript to: ')
+        #    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        #        print('Sending files to address', i)
+        #        server.login(sender_email, password)
 
-                message1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
-                message1=message1.read()
-                server.sendmail(sender_email, receiver_email, message1)
-                print('SEQUENCE 1 sent.')
-                time.sleep(0.5)
+        #        message1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
+        #        message1=message1.read()
+        #        server.sendmail(sender_email, receiver_email, message1)
+        #        print('SEQUENCE 1 sent.')
 
-                message2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
-                message2=message2.read()
-                server.sendmail(sender_email, receiver_email, message2)
-                print('SEQUENCE 2 sent.')
-                time.sleep(0.5)
+        #        message2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
+        #        message2=message2.read()
+        #        server.sendmail(sender_email, receiver_email, message2)
+        #        print('SEQUENCE 2 sent.')
 
-                message3=file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
-                message3=message3.read()
-                server.sendmail(sender_email, receiver_email, message3)
-                print('SEQUENCE 3 sent.')
-                time.sleep(0.5)
+        #        message3=file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
+        #        message3=message3.read()
+        #        server.sendmail(sender_email, receiver_email, message3)
+        #        print('SEQUENCE 3 sent.')
                 
-                message4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
-                message4=message4.read()
-                server.sendmail(sender_email, receiver_email, message4)
-                print('SEQUENCE 4 sent.')
-                time.sleep(0.5)
+        #        message4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
+        #        message4=message4.read()
+        #        server.sendmail(sender_email, receiver_email, message4)
+        #        print('SEQUENCE 4 sent.')
                 
-                message5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
-                message5=message5.read()
-                server.sendmail(sender_email, receiver_email, message5)
-                print('SEQUENCE 5 sent.')
-                time.sleep(0.5)
+        #        message5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
+        #        message5=message5.read()
+        #        server.sendmail(sender_email, receiver_email, message5)
+        #        print('SEQUENCE 5 sent.')
                       
-                message6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
-                message6=message6.read()
-                server.sendmail(sender_email, receiver_email, message6)
-                print('SEQUENCE 6 sent.\n')
-                time.sleep(0.5)
+        #        message6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
+        #        message6=message6.read()
+        #        server.sendmail(sender_email, receiver_email, message6)
+        #        print('SEQUENCE 6 sent.\n')
 
-                print('Mails sent for address', i)
-                server.quit()
+        #        print('Mails sent for address', i)
+        #        server.quit()
+        #print('\nAll mails sent.')
+        
+        # MAC METHOD:
+        sender_id=''
+        passwd=''
+        server=smtplib.SMTP('smtp.gmail.com',587)
+        server.ehlo()
+        server.starttls()
+        server.login(sender_id,passwd)
+        for i in range(1,n+1):
+            receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
+            print('Sending files to address', i)
+            
+            message1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
+            message1=message1.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 1',
+                    '', message1])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 1 sent.')
+
+            message2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
+            message2=message2.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 2',
+                    '', message2])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 2 sent.')
+
+            message3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
+            message3=message3.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 3',
+                    '', message3])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 3 sent.')
+
+            message4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')
+            message4=message4.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 4',
+                    '', message4])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 4 sent.')
+
+            message5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')
+            message5=message5.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 5',
+                    '', message5])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 5 sent.')
+
+            message6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')
+            message6=message6.read()
+            body='\r\n'.join(['To: %s' % receiver_id,
+                    'From: %s' % sender_id,
+                    'Subject: %s' % 'SEQUENCE 6',
+                    '', message6])
+            server.sendmail(sender_id, [receiver_id], body)
+            print('SEQUENCE 6 sent.')
+
+            print('Mails sent for address', i)
+        server.quit()
         print('\nAll mails sent.')
+        
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
         send_direct()
 
 
 # (ii) MULTI-LINE string:
 
 def send_multilinestring():
-    time.sleep(1)
     tr5=input('\nTRANSCRIPT 2: Would you like a mail regarding the transcript of the sequence information? (y/n): ')
-    time.sleep(1)
     if tr5=='n':
         pass
     elif tr5=='y':
         n=int(input('Enter no. of mails to be sent to the same, or different addresses: '))
-        time.sleep(1)
 
         #port=465
         #smtp_server="smtp.gmail.com"
@@ -557,7 +637,6 @@ def send_multilinestring():
             #with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
                 #print('Sending files to address', i)
                 #server.login(sender_email, password)
-                #time.sleep(0.5)
 
                 #m1=''''''
                 #message1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
@@ -565,7 +644,6 @@ def send_multilinestring():
                 #m1=m1+message1
                 #server.sendmail(sender_email, receiver_email, m1)
                 #print('SEQUENCE 1 sent.')
-                #time.sleep(0.5)
 
                 #m2=''''''
                 #message2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
@@ -573,7 +651,6 @@ def send_multilinestring():
                 #m2=m2+message2
                 #server.sendmail(sender_email, receiver_email, m2)
                 #print('SEQUENCE 2 sent.')
-                #time.sleep(0.5)
 
                 #m3=''''''
                 #message3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
@@ -581,7 +658,6 @@ def send_multilinestring():
                 #m3=m3+message3
                 #server.sendmail(sender_email, receiver_email, m3)
                 #print('SEQUENCE 3 sent.')
-                #time.sleep(0.5)
 
                 #m4=''''''
                 #message4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
@@ -589,7 +665,6 @@ def send_multilinestring():
                 #m4=m4+message4
                 #server.sendmail(sender_email, receiver_email, m4)
                 #print('SEQUENCE 4 sent.')
-                #time.sleep(0.5)
 
                 #m5=''''''
                 #message5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
@@ -597,7 +672,6 @@ def send_multilinestring():
                 #m5=m5+message5
                 #server.sendmail(sender_email, receiver_email, m5)
                 #print('SEQUENCE 5 sent.')
-                #time.sleep(0.5)
 
                 #m6=''''''
                 #message6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
@@ -605,12 +679,10 @@ def send_multilinestring():
                 #m6=m6+message6
                 #server.sendmail(sender_email, receiver_email, m6)
                 #print('SEQUENCE 6 sent.\n')
-                #time.sleep(0.5)
 
         # MAC METHOD:
-        
-        sender_id='04250@asianintlschool.com'
-        passwd='sibikarthik260104'
+        sender_id=''
+        passwd=''
         
         server=smtplib.SMTP('smtp.gmail.com',587)
         server.ehlo()
@@ -620,7 +692,6 @@ def send_multilinestring():
         for i in range(1,n+1):
             receiver_id=input('\nPlease enter email address to send the shell window transcript to: ')
             print('Sending files to address', i)
-            time.sleep(0.5)
 
             m1=''''''
             message1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
@@ -632,7 +703,6 @@ def send_multilinestring():
                     '', m1])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 1 sent.')
-            time.sleep(0.5)
 
             m2=''''''
             message2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
@@ -644,7 +714,6 @@ def send_multilinestring():
                     '', m2])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 2 sent.')
-            time.sleep(0.5)
 
             m3=''''''
             message3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
@@ -656,7 +725,6 @@ def send_multilinestring():
                     '', m3])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 3 sent.')
-            time.sleep(0.5)
 
             m4=''''''
             message4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')
@@ -668,7 +736,6 @@ def send_multilinestring():
                     '', m4])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 4 sent.')
-            time.sleep(0.5)
 
             m5=''''''
             message5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')
@@ -680,7 +747,6 @@ def send_multilinestring():
                     '', m5])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 5 sent.')
-            time.sleep(0.5)
 
             m6=''''''
             message6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')
@@ -692,20 +758,14 @@ def send_multilinestring():
                     '', m6])
             server.sendmail(sender_id, [receiver_id], body)
             print('SEQUENCE 6 sent.')
-            time.sleep(0.5)
 
             print('Mails sent for address', i)
         server.quit()
         print('\nAll mails sent.')
     else:
         print('Wrong input, try again. \n')
-        time.sleep(1)
         send_multilinestring()
-
-            
-
-            
-
+        
 
 #____________________________________________________________________________________________________________________________________________________
         
