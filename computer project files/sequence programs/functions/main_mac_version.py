@@ -633,124 +633,79 @@ def send_multilinestring():
         
 
 #____________________________________________________________________________________________________________________________________________________
-        
-    
-                                                                    #INTRODUCTION:
-
                                                                     
-
-time.sleep(0.5)
+                                                                           #INTRODUCTION:
+                                                                    
 print('--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-time.sleep(0.5)
 print('                                                            ----- SEQUENCE GENERATOR -----\n')
-time.sleep(0.5)
 print('--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
 time.sleep(0.5)
 print('----------------------------------------------------------------------------------------------------')
-time.sleep(0.5)
 print('| * NOTE:                                                                                          |')
-time.sleep(0.5)
 print('| - When the program asks for your input, please type the input and press the ENTER key.           |')
-time.sleep(0.5)
 print("| - If you want to exit the program immediately at any point, use the command 'CTRL+C'.     |")
-time.sleep(0.5)
 print('----------------------------------------------------------------------------------------------------\n')
 time.sleep(0.5)
 
 print('Options:')
-time.sleep(0.5)
 print('      |')
 print('      |')
-time.sleep(0.5)
 print('      |---> 1. SEQUENCE INFORMATION')
-time.sleep(0.5)
 print('      |')
 print('      |')
-time.sleep(0.5)
 print('      |---> 2. SEQUENCE GENERATION')
-time.sleep(0.5)
 print('      |')
 print('      |')
-time.sleep(0.5)
 print('      |---> 3. EXIT')
-time.sleep(0.5)
 print('                  |')
 print('                  |')
-time.sleep(0.5)
 print('                  |---> SUGGESTION TO ADD SEQUENCES')
-time.sleep(0.5)
 #print('                  |---> REVIEWS / SUGGESTIONS')
-#time.sleep(0.5)
 print('                  |---> FILE TRANSCRIPT')
-time.sleep(0.5)
 print('                                      |')
 print('                                      |')
-time.sleep(0.5)
 print('                                      |---> Shell Window (copy and paste)')
-time.sleep(0.5)
 print('                                                       |')
 print('                                                       |')
-time.sleep(0.2)
 print('                                                       |---> Direct TEXT file sending')
 print('                                                       |---> Multi-line string from TEXT file\n')
-time.sleep(1)
 print('                                      |---> Briefs of sequences')
-time.sleep(0.5)
 print('                                                       |')
 print('                                                       |')
-time.sleep(0.2)
 print('                                                       |---> Line-by-line sending')
 print('                                                       |---> Direct TEXT file sending')
 print('                                                       |---> Multi-line string\n')
-time.sleep(2)
+time.sleep(5)
 
-time.sleep(1)
 print('- The following is the table of sequences within which you may ask the given operations to be performed: ', '\n')
-time.sleep(0.5)
 print('(S_no:', ' Sequence Name:', ' Year of Discovery:)', sep=' ', end='\n')
-time.sleep(0.5)
 
 query=('select * from sequences')              
 cur.execute(query)
 data1=cur.fetchall()
-#print('\n')
 for i in data1:
-    time.sleep(1)
     print(i,'\n')
-time.sleep(1)
 print('--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-
-
 
 # USER INPUT:
 
-while True:                                                                 # This is for the choice twice back or once back (corresponds to the breaks)
-
+while True:                                                            # This is for the choice twice back or once back (corresponds to the breaks)
     print('\nOperations: ')
-    time.sleep(1)
-
     print('1. Display Information of Sequences: ')
     print('2. Choose sequence to work with (generation): ')
     print('3. EXIT:', '\n')
-    time.sleep(0.5)
     print('Attempts = 5\n')
     time.sleep(1)
-    
     j=0
     try:
-        ch1=int(input('Please enter a choice (1-3): '))                     # Choosing of operation to perform:
-        
-        for i in range(0,5):                                                # Gives user 5 attempts to enter a number in the range (1-3):
+        ch1=int(input('Please enter a choice (1-3): '))                # Choosing of operation to perform:
+        for i in range(0,5):                                           # Gives user 5 attempts to enter a number in the range (1-3):
             if ch1<1:
-                time.sleep(1)
                 print('Your choice is less than 1.')
-                time.sleep(1)
                 ch1=int(input('Please enter a numerical choice in the range (1-3): '))
                 j+=1
             elif ch1>3:
-                time.sleep(1)
                 print('Your choice is greater than 3.')
-                time.sleep(1)
                 ch1=int(input('Please enter a numerical choice in the range (1-3): '))
                 j+=1
             elif ch1==1:
@@ -763,120 +718,68 @@ while True:                                                                 # Th
                 #break
                 pass
             if j==4:
-                time.sleep(1)
                 end=time.perf_counter()
                 time1=end-start
                 print('Maximum no. of attempts crossed, program exiting.                                              > Time elapsed:',time1,'seconds')
-                time.sleep(1)
                 sys.exit()
-    except ValueError:                                                              # If data type other than an integer is inputed: (exits program)
-        time.sleep(1)
+    except ValueError:                                                 # If data type other than an integer is inputed: (exits program)
         end=time.perf_counter()
         time1=end-start
         print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
-        time.sleep(1)
         sys.exit()
-
-    #if ch1==1:                                                                                # may have to remove this part for neatness
-    #    print('\n--> Your choice is (1. Display Information of Sequences: )\n')
-    #elif ch1==2:
-    #    print('\n--> Your choice is (2. Choose sequence to work with (generation): )\n')
-    #elif ch1==3:
-    #    print('\n--> Your choice is (3. EXIT: )\n')
-    #time.sleep(1.5)
-
-
-
 
 # WHAT TO DO DEPENDING ON THE INPUTS:
 
 # (i) choice 1 for INFO DISPLAY:
-   
-
 # starts here
 
     if ch1==1:                                                                                # choice for DFH information display
         print('--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
         print('(S_no:', ' Sequence Name:', ' Year of Discovery:)', sep=' ', end='\n')
-        time.sleep(1)
-        query=('select * from sequences')                                                     # prints table 
+        query=('select * from sequences')
         cur.execute(query)
         data1=cur.fetchall()
         for i in data1:
-            time.sleep(1)
             print(i,'\n')
         time.sleep(0.5)
-        r=cur.rowcount                                                                        # counts no. of rows retrieved
-        print("- Here, you'll get to know the information, history and why these sequences are important.(?) \n")
-        time.sleep(1.5)
-
+        r=cur.rowcount
+        print("- Here, you'll get to know the information, history and why these sequences are important.\n")
 
         speaker=ask_speak()
-        #if speaker=='y':
         engine=pyttsx3.init()                                                                 # object instantiation of the init class
 
                 
-        while True:             # while loop(secondary/sub) for program to ask for user input to perform operations until EXIT is pressed. 
-
+        while True:
             k=0
-            print('\nEnter a choice when prompted corresponding to the serial number of each sequence ( 1 -', r,') :')  # range as per no. of rows retrieved
-            time.sleep(1)
+            print('\nEnter a choice when prompted corresponding to the serial number of each sequence ( 1 -', r,') :')
             try:
                 ch2=int(input('Please enter choice here: '))
-                
-                for i in range(0,5):                                # Gives user 5 attempts to enter a number in the range (1-3):
+                for i in range(0,5):
                     if ch2<1:
-                        time.sleep(1)
                         print('Your choice is less than 1.')
-                        time.sleep(1)
                         ch2=int(input('Please enter a numerical choice in the range (1-6): '))
                         k+=1
                     elif ch2>6:
-                        time.sleep(1)
                         print('Your choice is greater than 6.')
-                        time.sleep(1)
                         ch2=int(input('Please enter a numerical choice in the range (1-6): '))
                         k+=1
-                    elif ch2==1:
-                        pass
-                    elif ch2==2:
-                        pass
-                    elif ch2==3:
-                        pass
-                    elif ch2==4:
-                        pass
-                    elif ch2==5:
-                        pass
-                    elif ch2==6:
-                        pass
                     if j==4:
-                        time.sleep(1)
                         end=time.perf_counter()
                         time1=end-start
                         print('Maximum no. of attempts crossed, program exiting.                                              > Time elapsed:',time1,'seconds')
-                        time.sleep(1)
                         sys.exit()
-##                      else:
-##                          sys.exit()
-            except ValueError:                  # If data type other than an integer is inputed: (exits program)
-                time.sleep(1)
+            except ValueError:
                 end=time.perf_counter()
                 time1=end-start
                 print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
-                time.sleep(1)
                 sys.exit()
-
-
             
             voices=engine.getProperty('voices')         # to change male and female voices
-            
-
 
             print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-            time.sleep(3)
+            time.sleep(1)
 
-
-            if ch2==1:                                                                                                   # FIRST SEQUENCE
+            if ch2==1:                              # FIRST SEQUENCE
                 file1=open('/Users/sibikarthik/Desktop/python projects/computer project files/fibonaccinumbers.txt','r')
                 r1=file1.readlines()
                 for i in r1:
@@ -889,16 +792,13 @@ while True:                                                                 # Th
                 #engine.stop()
                 file1.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
-                y=ask_choice2()                 # ask_choice2()[0] (return value as tuple)    NVM
-                if y==1:                        # to get the first element in the tuple (ch3) of the return value for the function
+                y=ask_choice2()                     # ask_choice2()[0] (return value as tuple)
+                if y==1:                            # to get the first element in the tuple (ch3) of the return value for the function
                     break
-                elif y==2:                      # (FIXED) this elif statement is being executed when ch2 is not 1:, problem to check:
-                    continue                    # PROGRAMWIZ CONTINUE STATEMENT
+                elif y==2:
+                    continue           
 
-           
-
-            elif ch2==2:                                                                                                 # SECOND SEQUENCE
+            elif ch2==2:                            # SECOND SEQUENCE
                 file2=open('/Users/sibikarthik/Desktop/python projects/computer project files/prime numbers.txt','r')
                 r2=file2.readlines()
                 for i in r2:
@@ -911,16 +811,13 @@ while True:                                                                 # Th
                 #engine.stop()
                 file2.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
                 y=ask_choice2()
                 if y==1:
                     break
                 elif y==2:                                 
-                    continue
+                    continue                
 
-                
-
-            elif ch2==3:                                                                                                 # THIRD SEQUENCE
+            elif ch2==3:                            # THIRD SEQUENCE
                 file3=open('/Users/sibikarthik/Desktop/python projects/computer project files/collatz sequence.txt','r')
                 r3=file3.readlines()
                 for i in r3:
@@ -933,16 +830,13 @@ while True:                                                                 # Th
                 #engine.stop()
                 file3.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
                 y=ask_choice2()
                 if y==1:
                     break
                 elif y==2:                                 
-                    continue
+                    continue                
 
-                
-
-            elif ch2==4:                                                                                                 # FOURTH SEQUENCE
+            elif ch2==4:                            # FOURTH SEQUENCE
                 file4=open('/Users/sibikarthik/Desktop/python projects/computer project files/pascal triangle numbers.txt','r')     
                 r4=file4.readlines()
                 for i in r4:
@@ -955,16 +849,13 @@ while True:                                                                 # Th
                 engine.stop()
                 file4.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
                 y=ask_choice2()
                 if y==1:
                     break
                 elif y==2:                                 
-                    continue
-
-                
+                    continue                
   
-            elif ch2==5:                                                                                                # FIFTH SEQUENCE
+            elif ch2==5:                            # FIFTH SEQUENCE
                 file5=open('/Users/sibikarthik/Desktop/python projects/computer project files/pentagonal numbers.txt','r')           
                 r5=file5.readlines()
                 for i in r5:
@@ -977,16 +868,13 @@ while True:                                                                 # Th
                 #engine.stop()
                 file5.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
                 y=ask_choice2()
                 if y==1:
                     break
                 elif y==2:                                 
-                    continue
+                    continue                
 
-                
-
-            elif ch2==6:                                                                                                # SIXTH SEQUENCE
+            elif ch2==6:                            # SIXTH SEQUENCE
                 file6=open('/Users/sibikarthik/Desktop/python projects/computer project files/fermat numbers.txt','r')               
                 r6=file6.readlines()
                 for i in r6:
@@ -999,18 +887,11 @@ while True:                                                                 # Th
                 #engine.stop()
                 file6.close()
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
                 y=ask_choice2()
                 if y==1:
                     break
                 elif y==2:                                 
                     continue
-
-
-
-# just instantiate the ch3 value else only the file 1 will be printed and others will not due to the else statement for the continue as in line with "if ch3==1:"
-
-
 
 # (ii) choice 2 for SEQUENCE GENERATION:
 
@@ -1020,82 +901,50 @@ while True:                                                                 # Th
     # from collatzfunction import collatz
     # from fermatfunction import fermat
     # from fermatprimefunction import is_prime, collatz_prime
-
-
+    
 # starts here
 
     elif ch1==2:
         print('--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
-        time.sleep(1)
         print('Here, you can generate any of the given sequences. ')
-        time.sleep(0.5)
         print('1. Fibonacci Numbers ')
-        time.sleep(0.5)
         print('2. Prime Numbers ')
-        time.sleep(0.5)
         print('3. Collatz Sequence ')
-        time.sleep(0.5)
         print('4. Pascal Triangle Numbers ')
-        time.sleep(0.5)
         print('5. Pentagonal Numbers ')
-        time.sleep(0.5)
         print('6. Fermat Numbers ')
-        time.sleep(0.5)
-
         while True:
-            time.sleep(1)
             print('Please enter choice when prompted. ')
             m=0
             try:
                 ch4=int(input('Please enter choice for the sequence you wish to generate: '))
                 for i in range(0,5):
-                    if ch4==1:
-                        pass
-                    elif ch4==2:
-                        pass
-                    elif ch4==3:
-                        pass
-                    elif ch4==4:
-                        pass
-                    elif ch4==5:
-                        pass
-                    elif ch4==6:
-                        pass
-                    elif ch4<1:
-                        time.sleep(1)
+                    if ch4<1:
                         print('Your choice is less than 1.')
                         ch4=int(input('Please enter a numerical choice in the range (1-6): '))
                         m+=1
                     elif ch4>6:
-                        time.sleep(1)
                         print('Your choice is more than 6.')
                         ch4=int(input('Please enter a numerical choice in the range (1-6): '))
                         m+=1
                     if m==4:
-                        time.sleep(1)
                         end=time.perf_counter()
                         time1=end-start
                         print('Maximum no. of attempts crossed, program exiting.                                              > Time elapsed:',time1,'seconds')
-                        time.sleep(1)
                         sys.exit()
-    ##                else:
-    ##                    sys.exit()
             except ValueError:
-                time.sleep(1)
                 end=time.perf_counter()
                 time1=end-start
                 print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
-                time.sleep(1)
                 sys.exit()
 
-            time.sleep(1)
             print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------\n')
             time.sleep(1)
 
             if ch4==1:                                              # Fibonacci sequence
                 from fibonaccifunction import fibonacci_n
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
+                time.sleep(1)
                 z=ask_choice3()
                 if z==1:
                     break
@@ -1105,7 +954,7 @@ while True:                                                                 # Th
             elif ch4==2:                                            # Prime numbers
                 from primenumbersfunction import prime
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
+                time.sleep(1)
                 z=ask_choice3()
                 if z==1:
                     break
@@ -1115,7 +964,7 @@ while True:                                                                 # Th
             elif ch4==3:                                            # Collatz sequence
                 from collatzfunction import collatz
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
+                time.sleep(1)
                 z=ask_choice3()
                 if z==1:
                     break
@@ -1125,7 +974,7 @@ while True:                                                                 # Th
             elif ch4==4:                                            # Pascal triangle numbers
                   from pascaltriangle import trianglenum
                   print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                  time.sleep(2)
+                  time.sleep(1)
                   z=ask_choice3()
                   if z==1:
                       break
@@ -1135,7 +984,7 @@ while True:                                                                 # Th
             elif ch4==5:                                            # Pentagonal numbers
                 from pentagonalnumbers import pentagonal
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
+                time.sleep(1)
                 z=ask_choice3()
                 if z==1:
                     break
@@ -1145,44 +994,30 @@ while True:                                                                 # Th
             elif ch4==6:                                            # Fermat numbers
                 from fermatfunction import fermat
                 print('\n--------------------------------------------------------------------------------------------------------------------------------------------------------------')
-                time.sleep(2)
+                time.sleep(1)
                 z=ask_choice3()
                 if z==1:
                     break
                 elif z==2:
                     continue
-
-            
-                
-
+                    
 # (iii) choice 3 for EXITING: (All exit points other than the input error ones have the suggestion and file transcript functions):           
-                
-            
+                        
     elif ch1==3:
         suggestion()                                                                
         # suggestion.csv()
         time.sleep(1)
         #improvement_review()
-        #time.sleep(2)
-
-##        send_windowtranscript()
-##        time.sleep(2)
+        #send_windowtranscript()
         send_text()
-        time.sleep(1)
-##        send_text_multilinestring()
-##        time.sleep(2)
-
-##        send_infotranscript()
-##        time.sleep(2)
-##        send_direct()
-##        time.sleep(2)
+        #send_text_multilinestring()
+        #send_infotranscript()
+        #send_direct()
         send_multilinestring()
-        time.sleep(1)
         end=time.perf_counter()
         time1=end-start
         print('\nThank you for visiting!                                                                        > Time elapsed:',time1,'seconds')
         time.sleep(1)
         sys.exit()
-
 
 #____________________________________________________________________________________________________________________________________________________
