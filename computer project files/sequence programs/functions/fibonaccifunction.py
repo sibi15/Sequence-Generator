@@ -26,4 +26,3 @@ n=int(input('Enter no. of terms in the sequence required to be displayed: '))
 fibonacci_n(n)
 time.sleep(1)
 # print("The original Fibonacci Series with the starting numbers 0 and 1 is unique due to its application in the real world.")
-        
