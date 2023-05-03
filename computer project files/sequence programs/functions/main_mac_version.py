@@ -3,9 +3,6 @@
 # Sequence info transcipt is via MULTI-LINE STRING
 # Shell transcript is via TEXT FILE
 
-# LESS SECURE APPS link:
-#https://myaccount.google.com/u/2/lesssecureapps?pli=1&rapt=AEjHL4Pt00WJObL2Gz1gyIyS-pjTd7FOgqspqLjlPWRZTqL6BI4zGG_6i-N0gjT-O4D00GWwMIKBLkYaMBfrzQ0IitJglwKyvw
-
 import mysql.connector
 from time import perf_counter, sleep
 import time
