@@ -749,7 +749,7 @@ while True:                                                            # This is
         print("- Here, you'll get to know the information, history and why these sequences are important.\n")
 
         speaker=ask_speak()
-        engine=pyttsx3.init('dummy')                                                                 # object instantiation of the init class
+        engine=pyttsx3.init()
 
                 
         while True:
@@ -777,7 +777,7 @@ while True:                                                            # This is
                 print('Wrong input, program exiting.                                                                > Time elapsed:', time1,'seconds')
                 sys.exit()
             
-            voices=engine.getProperty('voices')         # to change male and female voices
+            voices=engine.getProperty('voices')
 
             print('\n---------------------------------------------------------------------------------------------------------------------------------------------\n')
             time.sleep(1)
@@ -795,8 +795,8 @@ while True:                                                            # This is
                 #engine.stop()
                 file1.close()
                 print('\n---------------------------------------------------------------------------------------------------------------------------------------------')
-                y=ask_choice2()                     # ask_choice2()[0] (return value as tuple)
-                if y==1:                            # to get the first element in the tuple (ch3) of the return value for the function
+                y=ask_choice2()
+                if y==1:
                     break
                 elif y==2:
                     continue           
@@ -897,14 +897,6 @@ while True:                                                            # This is
                     continue
 
 # (ii) choice 2 for SEQUENCE GENERATION:
-
-    # from fibonaccifunction import fibonacci_n
-    # from fibonaccifunction(user) import fibonacci
-    # from primenumbersfunction import prime
-    # from collatzfunction import collatz
-    # from fermatfunction import fermat
-    # from fermatprimefunction import is_prime, collatz_prime
-    
 # starts here
 
     elif ch1==2:
