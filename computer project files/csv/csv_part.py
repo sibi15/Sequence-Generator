@@ -24,13 +24,4 @@ def suggestion_csv():
                   suggestion=input('Enter sequence name: ')
                   w.writerow([serial_num,suggestion])
             print('Suggestions received. Thank you!')
-
-      
-
-
-
-suggestion_csv()
-                  
-            
-            
-            
+suggestion_csv()     
