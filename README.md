@@ -1,4 +1,4 @@
-# Sequence-Generator: A Museum of Famous Number Patterns
+# Sequence Generator: A Museum of Famous Number Patterns
 Explore six legendary number sequences through an interactive Python program that feels like a mini digital museum. This app guides users through generating, hearing, and understanding sequences such as Fibonacci and Pascal Triangle Numbers, while gathering feedback and sharing transcripts via email.
 
 Technologies Used:
