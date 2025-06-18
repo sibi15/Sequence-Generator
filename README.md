@@ -20,7 +20,7 @@ Features:
 Who Benefits:
 - Math learners curious about number sequences
 - Educators wanting interactive tools
-- Python enthusiasts interested in TTS, database interaction, and email automation
+- Python enthusiasts interested in text-to-speech, database interaction, and email automation
 
 Future Goals:
 - Adding a GUI interface for better visuals
